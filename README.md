@@ -6,6 +6,7 @@ Proyecto de IA para procesamiento de imágenes y videos.
 - Entrenar modelos con imágenes y videos
 - Implementar reconocimiento visual similar a Meta AI
 - Crear sistema multimodal (visión + texto)
+- **Virtual Try-On**: Aprender de catálogos y aplicar estilos a imágenes
 
 ## Tecnologías
 - Python 3.10+
@@ -34,3 +35,25 @@ ai-assistant/
 3. Descargar dataset inicial
 4. Implementar pipeline de procesamiento
 5. Entrenar modelo baseline
+
+## 🆕 Nuevas Funcionalidades
+
+### Virtual Try-On (Probador Virtual)
+Sistema de IA que aprende de catálogos de ropa y aplica los estilos a fotos:
+
+```bash
+# Entrenar modelo base
+python quick_start.py
+
+# Usar Virtual Try-On
+python virtual_tryon.py
+```
+
+**Ver guía completa**: [VIRTUAL_TRYON.md](VIRTUAL_TRYON.md)
+
+### Características principales:
+- 👔 Aprende de catálogos de ropa/imágenes
+- 🎨 Aplica estilos aprendidos a nuevas imágenes
+- 📚 Soporte para múltiples categorías (camisas, pantalones, etc.)
+- 💾 Guarda y reutiliza estilos aprendidos
+- 🖼️ Procesa imágenes y videos
