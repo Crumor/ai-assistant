@@ -241,6 +241,8 @@ class VirtualTryOn:
         print(f"🎨 Aplicando estilo '{category_name}' a {image_path}")
         
         # Cargar imagen objetivo
+        if not os.path.isfile(image_path):
+            raise ValueError(f"Image file '{image_path}' does not exist")
         target_img = Image.open(image_path).convert('RGB')
         target_tensor = self.transform(target_img).unsqueeze(0).to(self.device)
         
