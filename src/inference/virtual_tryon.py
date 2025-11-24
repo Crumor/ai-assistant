@@ -191,6 +191,9 @@ class VirtualTryOn:
         image_exts = ('.jpg', '.jpeg', '.png', '.bmp')
         catalog_images = []
         
+        if not os.path.isdir(catalog_dir):
+            raise ValueError(f"Catalog directory '{catalog_dir}' does not exist or is not a directory")
+        
         for filename in os.listdir(catalog_dir):
             if filename.lower().endswith(image_exts):
                 img_path = os.path.join(catalog_dir, filename)
