@@ -60,6 +60,10 @@ class StyleTransferModel(nn.Module):
         # Extraer features del catálogo
         features = self.vision_model.extract_features(catalog_images)
         
+        # Ensure features has batch dimension
+        if len(features.shape) == 1:
+            features = features.unsqueeze(0)
+        
         # Promediar features de todas las imágenes del catálogo
         avg_features = features.mean(dim=0)
         
@@ -255,7 +259,9 @@ class VirtualTryOn:
         
         # Guardar si se especifica
         if output_path:
-            os.makedirs(os.path.dirname(output_path) or '.', exist_ok=True)
+            output_dir = os.path.dirname(output_path)
+            if output_dir:  # Only create if there's a directory component
+                os.makedirs(output_dir, exist_ok=True)
             styled_image.save(output_path)
             print(f"✓ Resultado guardado en {output_path}")
         

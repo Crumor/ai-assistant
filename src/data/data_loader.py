@@ -123,7 +123,8 @@ class VideoImageDataset(Dataset):
                 return Image.new('RGB', (224, 224), color='black')
             
             # Por ahora, retornar el frame del medio como representante
-            # TODO: En el futuro, podríamos retornar todos los frames
+            # NOTE: For basic classification, one representative frame is sufficient.
+            # For more advanced video analysis, modify this to return all frames.
             middle_frame = frames[len(frames) // 2]
             return Image.fromarray(middle_frame)
             

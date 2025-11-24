@@ -104,7 +104,8 @@ def learn_from_catalog_interactive(tryon):
         print("\n¿Aprender de todas las categorías? (s/n): ", end='')
         choice = input().strip().lower()
         
-        if choice in ['s', 'si', 'sí', 'y', 'yes']:
+        # Accept Spanish and English for user convenience
+        if choice in ['s', 'si', 'sí', 'yes', 'y']:
             for subdir in subdirs:
                 subdir_path = os.path.join(catalog_dir, subdir)
                 try:
@@ -271,6 +272,8 @@ def main():
         print(f"🎨 Aplicando estilo '{args.category}' a {args.apply}")
         try:
             output = args.output or f'outputs/virtual_tryon/styled_{Path(args.apply).name}'
+            # Ensure output directory exists
+            os.makedirs(os.path.dirname(output), exist_ok=True)
             tryon.apply_to_image(args.apply, args.category, output)
             print(f"✅ Resultado guardado en: {output}")
             return 0
