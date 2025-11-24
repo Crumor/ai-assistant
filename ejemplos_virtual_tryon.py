@@ -3,7 +3,6 @@
 Ejemplo simple de uso del sistema Virtual Try-On
 """
 
-import os
 import sys
 
 
