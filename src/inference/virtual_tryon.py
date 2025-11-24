@@ -296,11 +296,17 @@ def create_virtual_tryon_model(base_model_path, output_path='models/virtual_tryo
     print("🔧 Creando modelo de Virtual Try-On...")
     
     # Cargar modelo base
-    checkpoint = torch.load(base_model_path, map_location='cpu')
+    try:
+        checkpoint = torch.load(base_model_path, map_location='cpu')
+    except Exception as e:
+        raise RuntimeError(f"❌ Error al cargar el checkpoint del modelo base desde '{base_model_path}': {e}")
     num_classes = checkpoint.get('num_classes', 10)
     
     base_model = VisionModel(num_classes=num_classes, pretrained=False)
-    base_model.load_state_dict(checkpoint['model_state_dict'])
+    try:
+        base_model.load_state_dict(checkpoint['model_state_dict'])
+    except Exception as e:
+        raise RuntimeError(f"❌ Error al cargar el state_dict del modelo base: {e}")
     
     # Crear modelo de style transfer
     style_model = StyleTransferModel(base_model)
