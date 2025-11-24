@@ -197,9 +197,12 @@ class VirtualTryOn:
         for filename in os.listdir(catalog_dir):
             if filename.lower().endswith(image_exts):
                 img_path = os.path.join(catalog_dir, filename)
-                img = Image.open(img_path).convert('RGB')
-                img_tensor = self.transform(img)
-                catalog_images.append(img_tensor)
+                try:
+                    img = Image.open(img_path).convert('RGB')
+                    img_tensor = self.transform(img)
+                    catalog_images.append(img_tensor)
+                except Exception as e:
+                    print(f"⚠️  Error al cargar {filename}: {e}. Saltando...")
         
         if len(catalog_images) == 0:
             raise ValueError(f"No se encontraron imágenes en {catalog_dir}")

@@ -40,8 +40,11 @@ class VideoImageDataset(Dataset):
             raise ValueError(f"Directorio {self.root_dir} no existe")
         
         # Obtener clases (subdirectorios)
-        classes = sorted([d for d in os.listdir(self.root_dir)
-                         if os.path.isdir(os.path.join(self.root_dir, d))])
+        try:
+            classes = sorted([d for d in os.listdir(self.root_dir)
+                             if os.path.isdir(os.path.join(self.root_dir, d))])
+        except (PermissionError, OSError) as e:
+            raise RuntimeError(f"No se puede leer el directorio {self.root_dir}: {e}")
         
         if len(classes) == 0:
             raise ValueError(f"No se encontraron clases en {self.root_dir}")
@@ -58,7 +61,13 @@ class VideoImageDataset(Dataset):
             class_dir = os.path.join(self.root_dir, class_name)
             class_idx = self.class_to_idx[class_name]
             
-            for filename in os.listdir(class_dir):
+            try:
+                filenames = os.listdir(class_dir)
+            except (PermissionError, OSError) as e:
+                print(f"⚠️  No se puede leer el directorio {class_dir}: {e}. Saltando...")
+                continue
+            
+            for filename in filenames:
                 filepath = os.path.join(class_dir, filename)
                 
                 if not os.path.isfile(filepath):
