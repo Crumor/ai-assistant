@@ -331,7 +331,7 @@ El sistema usa transfer learning:
 Próximas mejoras:
 
 - [ ] Mejor detección de áreas de ropa
-- [ ] Support para múltiples prendas simultáneas
+- [ ] Soporte para múltiples prendas simultáneas
 - [ ] Integración con modelos de segmentación
 - [ ] UI web interactiva
 - [ ] API REST para integración
