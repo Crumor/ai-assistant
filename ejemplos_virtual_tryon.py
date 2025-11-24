@@ -3,7 +3,6 @@
 Ejemplo simple de uso del sistema Virtual Try-On
 """
 
-import sys
 
 
 def print_header():
