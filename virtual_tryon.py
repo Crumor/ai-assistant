@@ -273,7 +273,7 @@ def main():
         try:
             output = args.output or f'outputs/virtual_tryon/styled_{Path(args.apply).name}'
             # Ensure output directory exists
-            os.makedirs(os.path.dirname(output), exist_ok=True)
+            os.makedirs(os.path.dirname(output) or '.', exist_ok=True)
             tryon.apply_to_image(args.apply, args.category, output)
             print(f"✅ Resultado guardado en: {output}")
             return 0
