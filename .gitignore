@@ -1,0 +1,56 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+venv/
+env/
+ENV/
+*.egg-info/
+dist/
+build/
+
+# Jupyter
+.ipynb_checkpoints/
+*.ipynb_checkpoints
+
+# Data
+data/raw/*
+data/processed/*
+!data/.gitkeep
+data/
+
+# Models
+models/checkpoints/*
+models/pretrained/*
+!models/.gitkeep
+
+# Logs
+logs/
+*.log
+wandb/
+mlruns/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Outputs
+outputs/
+results/
+
+# Environment
+.env
+.env.local
+
+# TensorBoard
+runs/
+tensorboard/
