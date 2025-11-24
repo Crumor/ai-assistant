@@ -191,7 +191,7 @@ def apply_style_interactive(tryon):
     
     # Aplicar estilo
     try:
-        styled_image = tryon.apply_to_image(
+        tryon.apply_to_image(
             image_path,
             category_name=category_name,
             output_path=output_path
